@@ -1,0 +1,161 @@
+{% extends "useradmin/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Main Form Section -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="licence-form" method="post" enctype="multipart/form-data" action="{% url 'useradmin' %}">
+                {% csrf_token %}
+                <h4 class="text-center mb-4">Licence Registration Form</h4>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="first-name" class="form-label">First Name:</label>
+                        <input type="text" class="form-control" id="first-name" name="first-name" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="middle-name" class="form-label">Middle Name:</label>
+                        <input type="text" class="form-control" id="middle-name" name="middle-name">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="last-name" class="form-label">Last Name:</label>
+                        <input type="text" class="form-control" id="last-name" name="last-name" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="dob" class="form-label">DOB:</label>
+                        <input type="date" class="form-control" id="dob" name="dob" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="licence-office" class="form-label">Licence Office:</label>
+                        <select class="form-select" id="licence-office" name="licence-office" required>
+                            <option value="101">Office 1</option>
+                            <option value="102">Office 2</option>
+                            <option value="103">Office 3</option>
+                            <option value="104">Office 4</option>
+                            <option value="105">Office 5</option>
+                            <option value="106">Office 6</option>
+                            <option value="107">Office 7</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+                    <div class="col-md-4">
+                        <label for="province" class="form-label">Province:</label>
+                        <select class="form-select" id="province" name="province" required>
+                            <option value="Koshi province">Koshi Province</option>
+                            <option value="Madesh province">Madesh Province</option>
+                            <option value="Bagmati province">Bagmati Province</option>
+                            <option value="Gandaki province">Gandaki Province</option>
+                            <option value="Lumbini province">Lumbini Province</option>
+                            <option value="Karnali province">Karnali Province</option>
+                            <option value="Sudurpashchim province">Sudurpashchim Province</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="district" class="form-label">District:</label>
+                        <input type="text" class="form-control" id="district" name="district" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="father-name" class="form-label">Father's Name:</label>
+                        <input type="text" class="form-control" id="father-name" name="father-name" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="issue-date" class="form-label">Issue Date:</label>
+                        <input type="date" class="form-control" id="issue-date" name="issue-date" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="expiry-date" class="form-label">Expiry Date:</label>
+                        <input type="date" class="form-control" id="expiry-date" name="expiry-date" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="photo" class="form-label">Photo:</label>
+                        <input type="file" class="form-control" id="photo" name="photo" accept="image/*" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="licence-no" class="form-label">Licence No:</label>
+                        <input type="text" class="form-control" id="licence-no" name="licence-no" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="citizenship" class="form-label">Citizenship No:</label>
+                        <input type="text" class="form-control" id="citizenship" name="citizenship-no" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="category" class="form-label">Category:</label>
+                        <div class="input-group">
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C1">C1</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                            <!-- <input type="text" class="form-control" id="customCategory" name="customCategory"
+                                placeholder="Other (specify)" aria-label="Other category"> -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="category" class="form-label">Gender:</label>
+                        <select class="form-select" id="category" name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="blood-group" class="form-label">Blood Group:</label>
+                        <select class="form-select" id="blood-group" name="blood-group" required>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="contact-no" class="form-label">Contact No:</label>
+                        <input type="text" class="form-control" id="contact-no" name="contact-no" required>
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/form-validation.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+{% if messages %}
+{% for message in messages%}
+<script>
+    alertify.set('notifier', 'position', 'top-right');
+    alertify.set('notifier', 'delay', 10);
+    alertify.warning('{{message}}');
+</script>
+{% endfor %}
+
+{% endif %}
+{% endblock content %}

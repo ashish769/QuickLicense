@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Driving License</title>
+
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f9;
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .license-card {
+        width: 85.60mm;
+        height: 53.98mm;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: linear-gradient(to bottom, #fff, #e0e0e0);
+        padding: 2mm;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 4mm;
+    }
+
+    .header .left {
+        display: flex;
+        align-items: center;
+    }
+
+    .header .flag {
+        width: 6mm;
+        height: auto;
+        margin-right: 2mm;
+    }
+
+    .header .gov-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header .gov-text span {
+        font-size: 2.5mm;
+        color: #333;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1mm;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #333;
+        font-size: 2.5mm;
+        width: 45%;
+    }
+
+    .value {
+        width: 55%;
+        color: #555;
+        font-size: 2.5mm;
+    }
+
+    .photo {
+        position: absolute;
+        top: 2mm;
+        right: 2mm;
+    }
+
+    .photo img {
+        width: 24mm;
+        height: 24mm;
+        border-radius: 50%;
+        border: 1px solid #333;
+    }
+
+    .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.1;
+        width: 80mm;
+        height: 50mm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .watermark img {
+        width: 100%;
+        height: auto;
+    }
+
+    .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+
+    }
+
+    .img-container img {
+        height: 53.98mm;
+
+        width: 53.98mm;
+
+    }
+</style>
+
+<body>
+    <div class="license-card">
+        <div class="header">
+            <div class="left">
+                <img src="https://w1.pngwing.com/pngs/281/555/png-transparent-flag-nepal-flag-of-nepal-poster-blue-line-area-triangle.png"
+                    alt="Nepal Flag" class="flag">
+                <div class="gov-text">
+                    <span>Government of Nepal</span>
+                    <span>सरकार नेपाल</span>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="info">
+                <div class="row">
+                    <div class="label">Name:</div>
+                    <div class="value">{{val.personal_info.first_name}}
+                        {{val.personal_info.middle_name}} {{val.personal_info.last_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">D.O.B:</div>
+                    <div class="value">{{val.personal_info.dob}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">F/H Name:</div>
+                    <div class="value">{{val.personal_info.father_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">Citizenship No:</div>
+                    <div class="value">{{val.citizenship_no}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">Contact No:</div>
+                    <div class="value">{{val.personal_info.contact_no}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">Email:</div>
+                    <div class="value">{{val.personal_info.email}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">Address:</div>
+                    <div class="value"> {{val.address.district}}, {{val.address.province}}, Nepal</div>
+                </div>
+                <div class="row">
+                    <div class="label">License Office:</div>
+                    <div class="value">{{val.address.licence_office}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">D.O.I:</div>
+                    <div class="value">{{val.issue_date}}</div>
+                    <div class="label">D.O.E:</div>
+                    <div class="value">{{val.expiry_date}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">License No:</div>
+                    <div class="value">{{val.licence_no}}</div>
+                    <div class="label">Category:</div>
+                    <div class="value">{{val.category}}</div>
+                </div>
+                <div class="row">
+                    <div class="label">B.G:</div>
+                    <div class="value">{{val.personal_info.blood_group}}</div>
+                </div>
+            </div>
+            <div class="photo">
+                <img src="{{ val.personal_info.photo.url }}" alt="Photo" class="img-thumbnail">
+            </div>
+        </div>
+        <div class="watermark">
+            <img src="{% static 'images/map.png'%}" alt="Nepal Map">
+        </div>
+    </div>
+
+    <div class="img-container">
+        <img src="data:image/png;base64,{{ qr_code_base64 }}" alt="QR Code">
+    </div>
+
+</body>
+
+
+</html>

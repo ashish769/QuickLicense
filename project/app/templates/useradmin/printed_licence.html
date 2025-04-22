@@ -1,0 +1,124 @@
+{% extends "useradmin/base.html" %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #8baed1;
+        color: #ffffff;
+        padding: 20px 0;
+    }
+
+    header h1 {
+        font-size: 28px;
+        margin: 0;
+    }
+
+    header h2 {
+        font-size: 20px;
+        margin: 10px 0 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .table-responsive {
+        margin-top: 20px;
+    }
+
+    .table thead th {
+        background-color: #343a40;
+        color: #ffffff;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .btn-print {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+
+    .btn-print:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+<body>
+
+
+    <div class="container">
+        <h1 class=" text-center alert alert-success  ">printed license details</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">S.N</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Middle Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Licence Office</th>
+                        <th scope="col">Province</th>
+                        <th scope="col">District</th>
+                        <th scope="col">Father's Name</th>
+                        <th scope="col">Issue Date</th>
+                        <th scope="col">Expiry Date</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Licence No</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Citizenship No</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Blood Group</th>
+                        <th scope="col">Contact No</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ i.personal_info.first_name }}</td>
+                        <td>{{ i.personal_info.middle_name }}</td>
+                        <td>{{ i.personal_info.last_name }}</td>
+                        <td>{{ i.personal_info.dob }}</td>
+                        <td>{{ i.address.licence_office }}</td>
+                        <td>{{ i.address.province }}</td>
+                        <td>{{ i.address.district }}</td>
+                        <td>{{ i.personal_info.father_name }}</td>
+                        <td>{{ i.issue_date }}</td>
+                        <td>{{ i.expiry_date }}</td>
+                        <td><img src="{{ i.photo.url }}" alt="Photo" class="img-thumbnail" style="max-width: 50px;">
+                        </td>
+                        <td>{{ i.licence_no }}</td>
+                        <td>{{ i.personal_info.email }}</td>
+                        <td>{{ i.citizenship_no }}</td>
+                        <td>{{ i.category }}</td>
+                        <td>{{ i.personal_info.blood_group }}</td>
+                        <td>{{ i.personal_info.contact_no }}</td>
+                        <td>
+                            <a href="{% url 'licencefront' i.id %}"><button type="button" class="btn btn-print">
+                                    <i class="fa-solid fa-print"></i> Print</button></a>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Section</title>
+    <link rel="stylesheet" href="{% static 'css/superadmin.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    {% block css %}
+
+    {% endblock css %}
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{% static 'images/image.png' %}" alt="Logo">
+            </div>
+            <div class="title-and-nav">
+                <h1>Welcome to the Department of Dummy Transport Management</h1>
+                <div class="nav-buttons">
+                    <a href="{% url 'createsuperuser' %}"><button>signup</button></a>
+                    <a href="{% url 'createxadmin' %}"><button>Create XAdmin</button></a>
+                    <a href="{% url 'logout' %}"><button>Logout</button></a>
+                </div>
+
+            </div>
+        </div>
+        <marquee behavior="scroll" direction="left">Welcome to the Super Admin Section. Manage your keys and admin
+            settings here.</marquee>
+    </header>
+    {% block content %}
+
+    {% endblock content %}
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+    {% if messages %}
+    {% for message in messages%}
+    <script>
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.set('notifier', 'delay', 10);
+        alertify.warning('{{message}}');
+    </script>
+    {% endfor %}
+
+    {% endif %}
