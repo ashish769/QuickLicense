@@ -4,7 +4,6 @@
 ## Features
 
 - QR-based license system for quick validation.
-- Vehicle number integration for tracking traffic violations.
 - Violation records and fine payment system.
 - License renewal alerts.
 - Role-based authentication for different types of users (traffic officers, vehicle owners, etc.).
@@ -81,11 +80,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ![Screenshot 2025-04-22 192526](https://github.com/user-attachments/assets/b52a0811-494d-4af5-80f9-e91481b92fe1)
 
-
  ![Screenshot 2025-04-22 192647](https://github.com/user-attachments/assets/1da4103e-16b0-4ea8-9151-01214d340edc)
 
- 
- ![Screenshot 2025-04-22 192720](https://github.com/user-attachments/assets/9c345e82-43a1-4eb1-902e-fff75e2f892a)
 ![Screenshot 2025-04-22 192740](https://github.com/user-attachments/assets/11189c9a-a774-4b0e-b8fe-670fe0ce6f1d)
 ![Screenshot 2025-04-22 192758](https://github.com/user-attachments/assets/7591f009-4205-4e77-879d-0508d94861b2)
 ![Screenshot 2025-04-22 192944](https://github.com/user-attachments/assets/54c23829-2cdf-4faa-b69f-c1ed0788671b)
